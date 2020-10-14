@@ -44,3 +44,5 @@ let apiRoutes = require("./api-routes")
 
 // Use Api routes in the App
 app.use('/api', apiRoutes)
+
+module.exports = app;
