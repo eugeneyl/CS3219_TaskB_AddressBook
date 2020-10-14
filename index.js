@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-var uri = process.env.MODE && process.env.MODE === "SERVERLESS" ? process.env.MONGODB_SERVERLESS : "mongodb://localhost/cs3219_addressbook"
+var uri = process.env.MODE && process.env.MODE === "SERVERLESS" ? process.env.SERVERLESS : "mongodb://localhost/cs3219_addressbook"
 
 // Connect to Mongoose and set connection variable
 mongoose.connect(uri, { useNewUrlParser: true});
