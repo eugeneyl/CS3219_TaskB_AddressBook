@@ -9,7 +9,6 @@ Start mongodb instance on MacOS
 sudo mongod --config /usr/local/etc/mongod.conf
 
 
-
 To run:
 
 1. Start mongodb. 
