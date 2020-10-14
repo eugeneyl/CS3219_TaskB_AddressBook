@@ -25,7 +25,7 @@ describe('contact', () => {
      * /GET route
      */
 
-    // Test the /GET route without any entries
+    // Test the /GET all route without any entries
     describe('/GET contact', () => {
         it('it should GET all the contacts', (done) => {
 
@@ -41,7 +41,7 @@ describe('contact', () => {
         })
     }) 
 
-    // Test the /GET route with dummy entries
+    // Test the /GET all route with dummy entries
     describe('/GET contact', () => {
         it('it should GET all the contacts', (done) => {
             contacts.forEach(async (contact) => {
@@ -65,6 +65,52 @@ describe('contact', () => {
                 })
         })
     })
+
+    //Test the /GET/:id route with correct id
+    describe('/GET contact', () => {
+        it('it should GET the contact with the correspoding', (done) => {
+            var temp = new Contact();
+            temp.name = contacts[0].name
+            temp.gender = contacts[0].gender;
+            temp.email = contacts[0].email;
+            temp.phone = contacts[0].phone;
+            temp.save((err, contact) => {
+                chai
+                    .request(server)
+                    .get("/api/contacts/" + contact.id)
+                    .end((err, res) => {
+                        res.body.data.should.be.a('object');
+                        res.body.data.should.have.property('name').eql(temp.name)
+                        res.body.data.should.have.property('gender').eql(temp.gender)
+                        res.body.data.should.have.property('phone').eql(temp.phone)
+                        res.body.data.should.have.property('email').eql(temp.email)
+                        done()
+                    })
+            })
+        })
+    })
+
+    //Test the /GET/:id route with incorrect id
+    describe('/GET contact', () => {
+        it('it should GET the contact with the correspoding', (done) => {
+            var temp = new Contact();
+            temp.name = contacts[0].name
+            temp.gender = contacts[0].gender;
+            temp.email = contacts[0].email;
+            temp.phone = contacts[0].phone;
+            temp.save((err, contact) => {
+                chai
+                    .request(server)
+                    .get("/api/contacts/" + "123")
+                    .end((err, res) => {
+                        res.body.should.have.property("status").eql("error")
+                        res.body.should.have.property("message").eql("Contact cannot be found.")
+                        done()
+                    })
+            })
+        })
+    })
+
 
     /**
      * /POST route
