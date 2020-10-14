@@ -1,4 +1,5 @@
 // Import contact model
+const { reverse } = require('../data/contactsData');
 var Contact = require('../models/contactModel');
 
 // Handle index actions
@@ -56,7 +57,10 @@ exports.new = function (req, res) {
 exports.view = function (req, res) {
     Contact.findById(req.params.contact_id, function (err, contact) {
         if (err) {
-            res.send(err);
+            res.json({
+                status: "error",
+                message: "Contact cannot be found."
+            });
             return
         }
         res.json({
@@ -70,7 +74,10 @@ exports.view = function (req, res) {
 exports.update = function (req, res) {
     Contact.findById(req.params.contact_id, function (err1, contact) {
         if (err1) {
-            res.send(err1);
+            res.json({
+                status: "error",
+                message: "Contact cannot be found."
+            });
             return
         }    
         
