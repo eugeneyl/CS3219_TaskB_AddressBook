@@ -9,3 +9,5 @@ deploy:
   role: "arn:aws:iam::047742761070:role/cs3219-addressbook-dev-us-east-1-lambdaRole"
   runtime: "nodejs12.x"
   handler_name: "handler"
+  on:
+    branch: release
