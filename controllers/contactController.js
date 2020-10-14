@@ -106,7 +106,10 @@ exports.delete = function (req, res) {
         _id: req.params.contact_id
     }, function (err, contact) {
         if (err) {
-            res.send(err);
+            res.json({
+                status: "error",
+                message: "Contact cannot be deleted."
+            });
             return
         }
         res.json({
