@@ -9,6 +9,7 @@ exports.index = function (req, res) {
                 status: "error",
                 message: err,
             });
+            return
         }
         res.json({
             status: "success",
@@ -32,6 +33,7 @@ exports.new = function (req, res) {
             status: "error",
             message: "Please input a name for your contact."
         })
+        return
     }
 
     // save the contact and check for errors
@@ -41,6 +43,7 @@ exports.new = function (req, res) {
                 status: "error",
                 message: err
             });
+            return
         }
         res.json({
             message: 'New contact created!',
@@ -52,8 +55,10 @@ exports.new = function (req, res) {
 // Handle view contact info
 exports.view = function (req, res) {
     Contact.findById(req.params.contact_id, function (err, contact) {
-        if (err)
+        if (err) {
             res.send(err);
+            return
+        }
         res.json({
             message: 'Contact details loading..',
             data: contact
@@ -66,6 +71,7 @@ exports.update = function (req, res) {
     Contact.findById(req.params.contact_id, function (err1, contact) {
         if (err1) {
             res.send(err1);
+            return
         }    
         
         contact.name = req.body.name ? req.body.name : contact.name;
@@ -75,8 +81,10 @@ exports.update = function (req, res) {
         
         // save the contact and check for errors
         contact.save(function (err2) {
-            if (err2)
+            if (err2){
                 res.json(err2);
+                return
+            }
             res.json({
                 message: 'Contact Info updated',
                 data: contact
@@ -92,6 +100,7 @@ exports.delete = function (req, res) {
     }, function (err, contact) {
         if (err) {
             res.send(err);
+            return
         }
         res.json({
             status: "success",
