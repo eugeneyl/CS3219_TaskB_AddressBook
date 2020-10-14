@@ -1,7 +1,6 @@
-require('dotenv').config();
+//Depreciated, archive purpose
 
-//import serverless
-const serverless = require("serverless-http");
+require('dotenv').config();
 
 // Import express
 let express = require('express')
@@ -22,7 +21,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-var uri = process.env.MODE && process.env.MODE === "SERVERLESS" ? process.env.MONGODB_SERVERLESS : process.env.MONGODB_LOCAL
+var uri = !process.env.MODE || process.env.MODE === "local" ? process.env.MONGODB_LOCAL : process.env.MONGODB_SERVERLESS
 
 // Connect to Mongoose and set connection variable
 mongoose.connect(uri, { useNewUrlParser: true});
@@ -51,6 +50,4 @@ let apiRoutes = require("./api-routes")
 // Use Api routes in the App
 app.use('/api', apiRoutes)
 
-//For local and testing
-module.exports.local = app
-module.exports.handler = serverless(app);
+module.exports = app;
