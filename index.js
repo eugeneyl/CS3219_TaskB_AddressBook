@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 
 var uri = process.env.MODE && process.env.MODE === "SERVERLESS" ? process.env.ATLAS : "mongodb://localhost/cs3219_addressbook"
 
+console.log(uri)
 // Connect to Mongoose and set connection variable
 mongoose.connect(uri, { useNewUrlParser: true});
 var db = mongoose.connection;
