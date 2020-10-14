@@ -28,7 +28,6 @@ describe('contact', () => {
     // Test the /GET all route without any entries
     describe('/GET contact', () => {
         it('it should GET all the contacts', (done) => {
-
             chai
                 .request(server)
                 .get("/api/contacts")
@@ -44,25 +43,23 @@ describe('contact', () => {
     // Test the /GET all route with dummy entries
     describe('/GET contact', () => {
         it('it should GET all the contacts', (done) => {
-            contacts.forEach(async (contact) => {
-                var temp = new Contact();
-                temp.name = contact.name
-                temp.gender = contact.gender;
-                temp.email = contact.email;
-                temp.phone = contact.phone;
-                await temp.save()
+            var temp = new Contact();
+            temp.name = contacts[0].name
+            temp.gender = contacts[0].gender;
+            temp.email = contacts[0].email;
+            temp.phone = contacts[0].phone;
+            temp.save((err, contact) => {
+                chai
+                    .request(server)
+                    .get("/api/contacts")
+                    .end((err, res) => {
+                        should.exist(res.body);
+                        res.body.data.should.be.a('array');
+                        res.body.data.length.should.be.eql(1);
+                        res.body.should.have.property('message').eql("Contacts retrieved successfully")
+                        done()
+                    })
             })
-
-            chai
-                .request(server)
-                .get("/api/contacts")
-                .end((err, res) => {
-                    should.exist(res.body);
-                    res.body.data.should.be.a('array');
-                    res.body.data.length.should.be.eql(3);
-                    res.body.should.have.property('message').eql("Contacts retrieved successfully")
-                    done()
-                })
         })
     })
 
