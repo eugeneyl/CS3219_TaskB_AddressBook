@@ -32,7 +32,6 @@ npm start
 ```
 
 
-
 API Endpoints:
 
 - `GET /api/contacts` list all contacts
@@ -40,3 +39,9 @@ API Endpoints:
 - `GET /api/contacts/{id}` retrieve a single contact
 - `PUT /api/contacts/{id}` update a single contact
 - `DELETE /api/contacts/{id}` delete a single contact
+
+To test:
+
+```
+npm test
+```
