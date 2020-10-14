@@ -39,7 +39,7 @@ else
 var port = process.env.PORT || 8080;
 
 // Send message for default URL
-app.get('/', (req, res) => res.send('APIs are on /api/contacts'));
+app.get('/', (req, res) => res.send('APIs are on /api/contacts. Try it out'));
 
 // Launch app to listen to specified port
 app.listen(port, function () {
