@@ -52,5 +52,5 @@ let apiRoutes = require("./api-routes")
 app.use('/api', apiRoutes)
 
 //For local and testing
-module.exports.local = app
+module.exports = app
 module.exports.handler = serverless(app);
