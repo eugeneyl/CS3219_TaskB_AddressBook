@@ -11,5 +11,3 @@ functions:
     events: 
       - http: ANY /
       - http: ANY /{proxy+}
-    environment:
-      DB_SOURCE: 'atlas'
