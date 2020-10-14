@@ -4,7 +4,7 @@ node_js:
 services: mongodb
 deploy:
   provider: lambda
-  function_name: "cs3219-addressbook"
+  function_name: "cs3219-addressbook-dev-app"
   region: "us-east-1"
   role: "arn:aws:iam::047742761070:role/cs3219-addressbook-dev-us-east-1-lambdaRole"
   runtime: "nodejs12.x"
