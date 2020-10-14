@@ -1,0 +1,19 @@
+{
+  "name": "taskb-backend",
+  "version": "1.0.0",
+  "description": "CS3219 task b backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon index"
+  },
+  "author": "Eugene Yong",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "mocha": "^8.1.3"
+  }
+}
