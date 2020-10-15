@@ -24,7 +24,6 @@ app.use(bodyParser.json());
 
 var uri = process.env.MODE && process.env.MODE === "SERVERLESS" ? "mongodb+srv://cs3219-testuser:i4QjONtOfyJzQmoV@eugeneyl-cluster.lu3m4.mongodb.net/cs3219_addressbook?retryWrites=true&w=majority" : "mongodb://localhost/cs3219_addressbook"
 
-console.log(uri)
 // Connect to Mongoose and set connection variable
 mongoose.connect(uri, { useNewUrlParser: true});
 var db = mongoose.connection;
@@ -39,7 +38,7 @@ else
 var port = process.env.PORT || 8080;
 
 // Send message for default URL
-app.get('/', (req, res) => res.send('APIs are on /api/contacts'));
+app.get('/', (req, res) => res.send('APIs are on /api/contacts. Try it out'));
 
 // Launch app to listen to specified port
 app.listen(port, function () {
