@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar id="header" variant="faded" type="light">
-      <b-navbar-brand href="#" class="mb-0">Address Book</b-navbar-brand>
+      <b-navbar-brand href="/home" class="mb-0">Address Book</b-navbar-brand>
       <b-navbar-nav class="ml-auto">
         <b-nav-item href="/addContact">Add Contact</b-nav-item>
       </b-navbar-nav>
