@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import AddressBook from '@/components/AddressBook'
 import AddContact from '@/components/AddContact'
+import EditContact from '@/components/EditContact'
 
 Vue.use(Router)
 
@@ -12,6 +13,12 @@ export default new Router({
       path: '/addContact',
       name: 'AddContact',
       component: AddContact
+
+    },
+    {
+      path: '/editContact/:id',
+      name: 'EditContact',
+      component: EditContact
 
     },
     {

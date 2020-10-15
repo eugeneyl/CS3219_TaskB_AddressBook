@@ -5,6 +5,7 @@ const apiURL = "http://localhost:8080/api/contacts"
 export default {
     state: {
         contactList: [],
+        selectedContact: {}
     },
     mutations: {
         setContactList(state, contactList){
@@ -20,12 +21,17 @@ export default {
         },
         editContactList(state, updatedContact){
             var list = [...state.contactList]
-            list.map(contact => {
+            list = list.map(contact => {
                 if (contact._id === updatedContact._id) {
                     contact = updatedContact
                 }
                 return contact
             })
+            state.contactList = list
+        },
+        updateSelectedContact(state, contact){
+            state.selectedContact = {}
+            state.selectedContact = contact
         },
     },
     actions: {
@@ -33,6 +39,15 @@ export default {
             axios.get(apiURL)
                 .then(response => {
                     commit('setContactList', response.data.data)
+                })
+                .catch(e => {
+                    console.log("Error getting contact list: " + e)
+                })
+        },
+        async getContact({ commit }, contactId) {
+            axios.get(apiURL + "/" + contactId)
+                .then(response => {
+                    commit('updateSelectedContact', response.data.data)
                 })
                 .catch(e => {
                     console.log("Error getting contact list: " + e)
@@ -48,7 +63,7 @@ export default {
                 })
         },
         async deleteContact({ commit }, contactId) {
-            axios.post(apiURL+"/"+contactId)
+            axios.delete(apiURL+"/"+contactId)
                 .then( () => {
                     commit('deleteFromContactList', contactId)
                 })
@@ -56,8 +71,8 @@ export default {
                     console.log("Error deleting from contact list: " + e)
                 })
         },
-        async editContact({ commit }, contactId, contact) {
-            axios.post(apiURL+"/"+contactId, contact)
+        async editContact({ commit }, res) {
+            axios.put(apiURL+"/"+res.id, res.data)
                 .then(response => {
                     commit('editContactList', response.data.data)
                 })
