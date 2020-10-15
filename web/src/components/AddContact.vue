@@ -62,7 +62,6 @@ export default {
     methods: {
         onSubmit(event) {
             event.preventDefault();
-            console.log(this.form)
             this.$store.dispatch('addContact', this.form)
             this.$router.push('/home')
         },
