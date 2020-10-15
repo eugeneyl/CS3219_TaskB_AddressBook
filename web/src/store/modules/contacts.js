@@ -8,7 +8,6 @@ export default {
     },
     mutations: {
         setContactList(state, contactList){
-            console.log(contactList)
             state.contactList = [...contactList]
         },
         addToContactList(state, contact){
