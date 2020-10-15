@@ -11,20 +11,20 @@
             <thead>
                 <tr>
                     <th id="name">Name</th>
-                    <th id="gender">Gender</th>
                     <th id="email">Email</th>
+                    <th id="gender">Gender</th>
                     <th id="phone">Phone Number</th>
                     <th id="options"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="contact in contactList" :key="contact._id">
+                <tr v-for="contact in contactList" :key="contact._id" >
                     <td>{{contact.name}}</td>
-                    <td>{{contact.gender}}</td>
                     <td>{{contact.email}}</td>
+                    <td>{{contact.gender}}</td>
                     <td>{{contact.phone}}</td>
                     <td style="text-align:center">
-                        <button v-on:click="editContact(contact._id)" type="button" class="btn btn-light">Edit</button>
+                        <button v-on:click="editContact(contact)" type="button" class="btn btn-light">Edit</button>
                         <button v-on:click="deleteContact(contact._id)" type="button" class="btn btn-light">Delete</button>
                     </td>
                 </tr>
@@ -42,11 +42,12 @@ export default {
         }
     },
     methods:{
-        editContact(id) {
-            console.log("edit" + id)
+        editContact(contact) {
+            this.$router.push("/editContact/" + contact._id)
         },
         deleteContact(id) {
-            console.log("delete" + id)
+            this.$store.dispatch('deleteContact', id)
+            location.reload()
         },
     },
     mounted() {
