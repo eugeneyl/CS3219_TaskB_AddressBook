@@ -9,6 +9,9 @@ let express = require('express')
 // Initialize the app
 let app = express();
 
+var cors = require('cors');
+app.use(cors());
+
 // Import Body parser
 let bodyParser = require('body-parser');
 
