@@ -104,3 +104,7 @@ npm test
 
 Automated testing is setup using Travis. When any commits are made to any of the branches, Travis will run through the different tests in `test.js`. If any of the tests fails, the build will fail and a red dot will be shown on the repo page on github. If all the tests are successful, a green dot will be shown instead. 
 
+### Running Frontend
+
+Navigate to `/web` and follow the instructions on the readme.
+
