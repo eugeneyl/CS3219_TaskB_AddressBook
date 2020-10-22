@@ -34,3 +34,26 @@ Your application is running here: http://localhost:8081
 ```
 
 5. Go to the url from the message in step 4 to access the application. 
+
+### Web Application Breakdown
+
+There are 3 views in this application.
+
+1. Home Page
+
+   Upon entering the webpage, you will be directed to the home page. On this page, you will be able to see all the contacts that you have previously added. You also have the option of adding new contact (top right button), editing a contact, or deleting a contact. 
+
+   ![home_page](screenshots/home_page.png)
+
+2. Add Contact Page
+
+   The add contact page allows you to fill in the different fields for a new contact to be added.
+
+   ![add_page](screenshots/add_page.png)
+
+3. Edit Contact Page
+
+   The edit contact page allows you to edit any fields for an existing contact. Upon entering the page, the current contact details of the contact will be shown in the different form entries.
+
+   ![edit_page](screenshots/edit_page.png)
+
