@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --exit",
-    "start": "nodemon index"
+    "start": "node index"
   },
   "author": "Eugene Yong",
   "license": "ISC",
